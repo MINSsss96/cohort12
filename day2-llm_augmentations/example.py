@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #-------------------------------------
-#모델 설정
+#모델 설정 클로드
 #-------------------------------------
 from langchain_anthropic import ChatAnthropic
 llm = ChatAnthropic(model="claude-sonnet-4-5-20250929")
