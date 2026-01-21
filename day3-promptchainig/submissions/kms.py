@@ -55,7 +55,12 @@ def generate_joke(state: State):
 def check_punchline(state: State):
     """Gate function to check if the joke has a punchline"""
 
-    # 무조건 개선 단계를 거치도록 강제로 Fail 반환
+    # LLM에게 농담 평가 요청 (심사위원 역할)
+    response = llm.invoke(f"다음 농담이 재미있고 펀치라인이 살아있으면 'Pass', 아니면 'Fail'이라고만 대답해줘.\n\n농담: {state['joke']}")
+    
+    # LLM의 응답에서 Pass/Fail 판별
+    if "Pass" in response.content:
+        return "Pass"
     return "Fail"
     
     # 이전 로직 (참고용)
